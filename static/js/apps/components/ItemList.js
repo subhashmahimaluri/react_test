@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addItemById } from '../actions';
+import { addItemById, addMoney } from '../actions';
 
 class ItemList extends Component {
   displayMessage() {
@@ -30,7 +30,15 @@ class ItemList extends Component {
                   <h4 className="card-title">{item.name}</h4>
                 </div>
                 <div className="card-footer">
-                  <div className="btn btn-primary" onClick={() => this.props.addItemById(item.id)}>Add to Cart</div>
+                  <div className="btn btn-primary"
+                    onClick={() => {
+                      this.props.addItemById(item.id);
+                      this.props.addMoney(item.price);
+                    }
+                  }
+                  >
+                  Add to Cart
+                  </div>
                 </div>
               </div>
             </div>
@@ -45,4 +53,4 @@ function mapStateToProps(state) {
   return { catalog: state.itemsList }
 }
 
-export default connect(mapStateToProps, { addItemById })(ItemList);
+export default connect(mapStateToProps, { addItemById, addMoney })(ItemList);

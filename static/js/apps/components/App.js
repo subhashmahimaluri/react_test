@@ -6,8 +6,8 @@ class App extends Component {
   render() {
     return(
       <div className="container">
-        <ItemList />
         <CartItems />
+        <ItemList />
       </div>
     );
   }
